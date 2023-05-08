@@ -1,0 +1,107 @@
+openapi: 3.0.1
+info:
+  title: Site Generator
+  description: A plugin that allows users to generate temporary web pages based on provided HTML content.
+  version: 'v1'
+servers:
+  - url: 'https://sitegenerator.qfd.repl.co'
+paths:
+  /page:
+    post:
+      operationId: createPage
+      summary: Create a temporary web page with the provided HTML content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                html:
+                  type: string
+                  description: HTML content for the page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pageUrl:
+                    type: string
+                    description: The URL of the generated web page
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+  /append:
+    post:
+      operationId: appendHtml
+      summary: Append more HTML content to an incomplete page using the provided token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: Token associated with the incomplete HTML content
+                html:
+                  type: string
+                  description: Additional HTML content to append to the existing page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Message to continue appending more HTML or the URL of the complete page
+                  token:
+                    type: string
+                    description: Token to continue appending more HTML (only if the HTML is still incomplete)
+                  pageUrl:
+                    type: string
+                    description: The URL of the complete page (only if the HTML is now complete)
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message

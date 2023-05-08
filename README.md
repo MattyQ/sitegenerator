@@ -8,13 +8,9 @@ Getting Started
 
 Before using the Site Generator plugin, make sure to install the necessary dependencies by running the following command in your project directory:
 
-shCopy code
-
 `npm install`
 
 After installing the dependencies, start the server by running:
-
-shCopy code
 
 `npm start`
 
@@ -35,8 +31,6 @@ API Usage
 
 To create a page, send a `POST` request to the `/page` endpoint with the HTML content in the request body. The HTML content must be a string.
 
-httpCopy code
-
 `POST /page HTTP/1.1 Content-Type: application/json  {   "html": "<!DOCTYPE html><html><head><title>My Temporary Page</title></head><body><h1>Hello, World!</h1></body></html>" }`
 
 If the provided HTML content is complete (i.e., it contains the `</html>` closing tag), the API will create a temporary web page and return the URL to access it. If the HTML content is incomplete (i.e., the `</html>` tag is missing), the API will respond with a token that you must use to continue your code.
@@ -44,8 +38,6 @@ If the provided HTML content is complete (i.e., it contains the `</html>` closin
 ### Append HTML Content
 
 To append more HTML content to an incomplete HTML document, send a `POST` request to the `/append` endpoint with the token and the additional HTML content in the request body. The token must be a valid token received from the `/page` endpoint, and the additional HTML content must be a string.
-
-httpCopy code
 
 `POST /append HTTP/1.1 Content-Type: application/json  {   "token": "your_token_here",   "html": "</body></html>" }`
 

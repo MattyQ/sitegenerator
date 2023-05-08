@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Generator Plugin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .logo {
+      text-align: center;
+    }
+    .logo img {
+      max-width: 64px;
+    }
+    h1 {
+      text-align: center;
+    }
+    p {
+      line-height: 1.5;
+    }
+    .code-block {
+      background-color: #f0f0f0;
+      padding: 10px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="/.well-known/logo.png" alt="Site Generator Logo">
+    </div>
+    <h1>Site Generator Plugin</h1>
+    <p>
+      Welcome to the Site Generator plugin! This plugin allows you to generate temporary web pages based on provided HTML content. You can specify the content for the HTML body in the request body. The 'html' request field accepts a string.
+    </p>
+    <h2>How to Use the Endpoint</h2>
+    <p>
+      To create a new web page, make a POST request to the <code>/page</code> endpoint with the following JSON structure in the request body:
+    </p>
+    <pre class="code-block">
+{
+  "html": "&lt;!DOCTYPE html&gt;&lt;html lang=\\"en\\"&gt;&lt;head&gt;&lt;meta charset=\\"UTF-8\\"&gt;&lt;title&gt;My Page&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Hello, World!&lt;/h1&gt;&lt;p&gt;This is a simple web page.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+}
+    </pre>
+    <p>
+      The response will contain the URL of the generated web page. The page will be available for a limited time before it is automatically deleted.
+    </p>
+    <h2>Basic Example</h2>
+    <p>
+      Here's an example of how to create a simple web page with a heading and a paragraph:
+    </p>
+    <pre class="code-block">
+{
+  "html": "&lt;!DOCTYPE html&gt;&lt;html lang=\\"en\\"&gt;&lt;head&gt;&lt;meta charset=\\"UTF-8\\"&gt;&lt;title&gt;My Page&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Welcome to Site Generator&lt;/h1&gt;&lt;p&gt;Create and share web pages instantly.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+}
+    </pre>
+    <p>
+      The generated web page will display the heading "Welcome to Site Generator" and the paragraph "Create and share web pages instantly."
+    </p>
+  </div>
+</body>
+</html>

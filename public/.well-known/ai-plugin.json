@@ -1,0 +1,36 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Site Generator",
+  "name_for_model": "siteGenerator",
+  "description_for_human": "Plugin for generating temporary web pages based on provided HTML content.",
+  "description_for_model": "This plugin allows you to generate temporary web pages based on provided HTML content. You can specify the content for the HTML body in the request body. The 'html' request field accepts a string. If the code for your website will be longer than reasonable, you must still try to write and send the request. If your website is complete (that is, it contains the </html> closing tag), the plugin will create a temporary web page and return the URL to access it. If your website is incomplete (that is, the </html> tag is missing), the API responds with a token that you must use to continue your code. When a web page is created successfully, the page is deleted about two minutes after the first time it's accessed. If the page is never accessed, it is automatically deleted after about ten minutes.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://sitegenerator.qfd.repl.co/.well-known/openapi.yaml",
+    "is_user_authenticated": false
+  },
+  "logo_url": "https://sitegenerator.qfd.repl.co/.well-known/logo.png",
+  "contact_email": "support@sitegenerator.com",
+  "legal_info_url": "https://sitegenerator.qfd.repl.co/legal",
+  "endpoints": [
+    {
+      "name_for_human": "Create Page",
+      "name_for_model": "createPage",
+      "description_for_human": "Create a temporary web page with the provided HTML content.",
+      "description_for_model": "Create a temporary web page with the provided HTML content. If the HTML content is incomplete, you will receive a token to append more HTML content.",
+      "path": "/page",
+      "method": "post"
+    },
+    {
+      "name_for_human": "Append HTML",
+      "name_for_model": "appendHtml",
+      "description_for_human": "Append more HTML content to an incomplete HTML document.",
+      "description_for_model": "Append more HTML content to an incomplete HTML document using the provided token. If the HTML content is still incomplete, you will receive the same token to continue appending.",
+      "path": "/append",
+      "method": "post"
+    }
+  ]
+}
